@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-single
+*.zip
+.vite
+.env
+.env.*
+graphify-out
+assets/
+.vercel
+.vercel
