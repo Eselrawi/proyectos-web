@@ -1,0 +1,16 @@
+{
+  "appId": "com.misemana.agenda",
+  "appName": "Mi Semana",
+  "webDir": "www",
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover",
+      "style": "DARK"
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon",
+      "iconColor": "#5B5BF0"
+    }
+  }
+}

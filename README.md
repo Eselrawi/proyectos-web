@@ -1,11 +1,12 @@
 # Proyectos web
 
-Soy Raúl Gómez, desarrollador web junior. Aquí están los dos proyectos web que tengo publicados. Cada uno tiene su demo en línea y su propia carpeta con el código.
+Soy Raúl Gómez, desarrollador web junior. Aquí están los proyectos que tengo publicados. Cada uno tiene su demo o descarga y su propia carpeta con el código.
 
 | Proyecto | Demo | Código |
 | --- | --- | --- |
 | Lumbre Errante, carta de restaurante en 3D | [restaurante-azure-ten.vercel.app](https://restaurante-azure-ten.vercel.app) | [`restaurante/`](restaurante) |
 | Alquinaterra, web de herbolario | [alquinaterra-web.vercel.app](https://alquinaterra-web.vercel.app) | [`alquinaterra/`](alquinaterra) |
+| Mi Semana, agenda semanal para el móvil | [APK para Android](https://github.com/Eselrawi/proyectos-web/releases/latest) | [`mi-semana/`](mi-semana) |
 
 ## Lumbre Errante
 
@@ -36,6 +37,20 @@ Tecnologías: React 19, Vite, GSAP con ScrollTrigger, Lenis, Motion y Blender.
 
 Los datos del negocio (teléfono, dirección, valoraciones) son de ejemplo.
 
+## Mi Semana
+
+**[Descargar la APK](https://github.com/Eselrawi/proyectos-web/releases/latest)**
+
+Agenda semanal para el móvil. Escribes en una frase lo que tienes que hacer ("mañana a las 10 dentista") y la app entiende el día y la hora. Lo que no te da tiempo a hacer se pasa a mañana deslizando la tarea.
+
+- Entrada rápida en lenguaje natural, con vista previa del día y la hora antes de añadir.
+- Deslizar para marcar como hecha o aplazar. Las tareas atrasadas aparecen en *Hoy*.
+- Vista de día y de semana, un color por día y modo claro y oscuro.
+- Avisos en Android: resumen por la mañana, pendientes por la noche y plan del día siguiente.
+- Todo se guarda en el móvil, sin cuentas ni servidor.
+
+Tecnologías: HTML, CSS y JavaScript sin frameworks, Capacitor 8 (Android) y GitHub Actions para compilar la APK.
+
 ## Ejecutar un proyecto
 
 Cada carpeta es independiente. Por ejemplo:
@@ -46,7 +61,7 @@ npm install
 npm run dev
 ```
 
-El restaurante necesita además copiar `.env.example` a `.env.local`. Las instrucciones están en su README.
+El restaurante necesita además copiar `.env.example` a `.env.local`. Mi Semana se prueba en el navegador con `npm run dev` y su APK la compila GitHub Actions. Las instrucciones de cada uno están en su README.
 
 ## Autor
 

@@ -1,0 +1,102 @@
+name: Android APK (Mi Semana)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'mi-semana/**'
+      - '.github/workflows/mi-semana-apk.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mi-semana
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: mi-semana/package-lock.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Crear proyecto Android
+        run: |
+          npx cap add android
+          npx capacitor-assets generate --android \
+            --iconBackgroundColor '#5B5BF0' --iconBackgroundColorDark '#5B5BF0' \
+            --splashBackgroundColor '#5B5BF0' --splashBackgroundColorDark '#0F1018'
+          npx cap sync android
+          # Icono de notificación
+          for d in assets/notification/drawable-*; do
+            mkdir -p "android/app/src/main/res/$(basename "$d")"
+            cp "$d"/*.png "android/app/src/main/res/$(basename "$d")/"
+          done
+
+      - name: Versión
+        run: |
+          sed -i "s/versionCode 1$/versionCode ${{ github.run_number }}/" android/app/build.gradle
+          sed -i "s/versionName \"1.0\"/versionName \"1.0.${{ github.run_number }}\"/" android/app/build.gradle
+          grep -n "versionCode\|versionName" android/app/build.gradle
+
+      # Clave de firma: usa los secretos del repo si existen (actualizaciones sin
+      # desinstalar); si no, genera una temporal para esta compilación.
+      - name: Preparar clave de firma
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ] && [ -n "$KEYSTORE_PASSWORD" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/app.jks"
+            echo "SIGN_PASS=$KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
+            echo "Firmando con la clave del repositorio"
+          else
+            PASS=$(openssl rand -hex 16)
+            echo "::add-mask::$PASS"
+            keytool -genkeypair -keystore "$RUNNER_TEMP/app.jks" -alias misemana -keyalg RSA -keysize 2048 \
+              -validity 10000 -storepass "$PASS" -keypass "$PASS" -dname "CN=Mi Semana, O=Personal, C=ES"
+            echo "SIGN_PASS=$PASS" >> "$GITHUB_ENV"
+            echo "::warning::Sin secretos ANDROID_KEYSTORE_*: APK firmada con clave temporal (para actualizar habrá que desinstalar antes)."
+          fi
+
+      - name: Compilar APK firmada
+        working-directory: mi-semana/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon \
+            -Pandroid.injected.signing.store.file="$RUNNER_TEMP/app.jks" \
+            -Pandroid.injected.signing.store.password="$SIGN_PASS" \
+            -Pandroid.injected.signing.key.alias=misemana \
+            -Pandroid.injected.signing.key.password="$SIGN_PASS"
+          cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/MiSemana.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MiSemana-apk
+          path: MiSemana.apk
+
+      - name: Publicar en Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: mi-semana-v1.0.${{ github.run_number }}
+          name: Mi Semana 1.0.${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          files: MiSemana.apk
+          body: |
+            📱 **Descarga `MiSemana.apk`** desde el móvil y ábrela para instalarla.
+            Si Android lo pide, permite "instalar apps de origen desconocido" para tu navegador.

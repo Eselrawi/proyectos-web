@@ -1,0 +1,17 @@
+{
+  "name": "Mi Semana",
+  "short_name": "Mi Semana",
+  "description": "Agenda semanal rápida: escribe lo que tienes que hacer y aplázalo con un gesto.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F5FB",
+  "theme_color": "#5B5BF0",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

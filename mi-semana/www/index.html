@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#5B5BF0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mi Semana">
+  <title>Mi Semana</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="top-row">
+        <div>
+          <p class="eyebrow" id="monthLabel"></p>
+          <h1>Mi Semana</h1>
+        </div>
+        <div class="top-actions">
+          <button class="pill" id="todayBtn" aria-label="Ir a hoy">Hoy</button>
+          <button class="icon-btn" id="bellBtn" aria-label="Avisos" hidden>🔔</button>
+          <button class="icon-btn" id="viewToggle" aria-label="Cambiar vista">▦</button>
+        </div>
+      </div>
+
+      <div class="week-nav">
+        <button class="arrow" id="prevWeek" aria-label="Semana anterior">‹</button>
+        <div class="week-strip" id="weekStrip"></div>
+        <button class="arrow" id="nextWeek" aria-label="Semana siguiente">›</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="dayView">
+        <div class="day-head" id="dayHead"></div>
+        <div id="overdueBox"></div>
+        <ul class="tasks" id="taskList"></ul>
+        <div id="emptyState" class="empty" hidden></div>
+        <div id="doneBox"></div>
+        <p class="hint" id="swipeHint">Desliza → para marcar hecho · ← para pasar a mañana</p>
+      </section>
+
+      <section id="weekView" hidden></section>
+    </main>
+
+    <form class="composer" id="composer" autocomplete="off">
+      <div class="preview" id="preview" hidden></div>
+      <div class="composer-row">
+        <input id="quickInput" type="text" enterkeyhint="send"
+               placeholder="Ej: mañana a las 10 dentista" maxlength="140">
+        <button type="submit" class="send" id="sendBtn" aria-label="Añadir">＋</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Hoja inferior para editar -->
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" hidden>
+    <div class="sheet-grip"></div>
+    <label class="field-label" for="editText">Tarea</label>
+    <input id="editText" type="text" maxlength="140">
+    <p class="field-label">¿Cuándo?</p>
+    <div class="chips" id="dayChips"></div>
+    <div class="row-2">
+      <label class="mini">
+        <span>Fecha</span>
+        <input type="date" id="editDate">
+      </label>
+      <label class="mini">
+        <span>Hora (opcional)</span>
+        <input type="time" id="editTime">
+      </label>
+    </div>
+    <div class="sheet-actions">
+      <button class="btn danger" id="deleteBtn">🗑 Borrar</button>
+      <button class="btn primary" id="saveBtn">Guardar</button>
+    </div>
+  </div>
+
+  <!-- Hoja de ajustes de avisos -->
+  <div class="sheet-backdrop" id="notifBackdrop" hidden></div>
+  <div class="sheet" id="notifSheet" role="dialog" aria-modal="true" aria-labelledby="notifTitle" hidden>
+    <div class="sheet-grip"></div>
+    <h2 class="sheet-title" id="notifTitle">🔔 Avisos</h2>
+    <p class="sheet-sub">Notificaciones suaves para no olvidarte de nada.</p>
+    <div class="notif-list" id="notifList"></div>
+    <p class="notif-warn" id="notifWarn" hidden>Las notificaciones están bloqueadas. Actívalas en Ajustes del móvil → Apps → Mi Semana → Notificaciones.</p>
+    <div class="sheet-actions">
+      <button class="btn ghost" id="notifTest">Probar aviso</button>
+      <button class="btn primary" id="notifDone">Listo</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden>
+    <span id="toastText"></span>
+    <button id="toastUndo">Deshacer</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
