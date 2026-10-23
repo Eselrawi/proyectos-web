@@ -18,7 +18,22 @@ Maqueta de web para un herbolario. Un árbol fotorrealista ocupa el fondo y gira
 
 **[Probar la demo](https://palareserva.vercel.app)**
 
-Web para que los clubes de pádel gestionen sus reservas. El jugador reserva desde el móvil sin crear cuenta y el club lo controla todo desde su panel: agenda, pagos, premios, reservas fijas y clases. Tiene una página de presentación con acceso directo para probarla como jugador, recepción o encargado.
+Reservas de pistas de pádel para clubes pequeños y de pueblo. El jugador reserva desde el móvil en pocos toques, sin cuenta ni contraseña, y el club lo gestiona todo desde su panel. Cuota fija, sin comisión por reserva.
+
+| Para el jugador | Para el club |
+| --- | --- |
+| Reserva por hora, sin elegir pista | Cero solapes garantizado en la base de datos |
+| Pistas en 3D con el color del club | Panel en tiempo real: agenda, llegadas, pagos |
+| Sin cuenta: el móvil se acuerda de ti | Pago en el club o Bizum, marcado a mano |
+| Lista de espera con aviso al móvil | Reservas fijas semanales que se renuevan solas |
+| Partidos abiertos para buscar gente | Clases con prioridad sobre las reservas |
+| Clases individuales, por parejas y grupales | Logo, color y escena 3D propios por club |
+| Puntos y hora de pista gratis | Roles: gestor y recepción |
+| App instalable, en español, inglés y francés | Modo pueblo: pistas gratuitas y límite por persona |
+
+Pensada para enseñarla: entras como jugador, recepción o encargado con un toque, sin registrarte. Los datos de ejemplo se restablecen solos cada madrugada.
+
+Tecnología: Next.js, React, TypeScript, Tailwind, Three.js, Supabase (Postgres) y Vercel.
 
 ## Notas
 
