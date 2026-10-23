@@ -10,10 +10,6 @@ Carta digital en 3D para un restaurante ficticio. Cada plato se ve desde arriba,
 
 ## Alquinaterra
 
-**[Probar la demo](https://alquinaterra-web.vercel.app)**
-
-Maqueta de web para un herbolario. Un árbol fotorrealista ocupa el fondo y gira mientras haces scroll, con tarjetas fijas encima: categorías de producto, reseñas, horario y contacto. Modo claro y oscuro.
-
 ## PalaReserva
 
 **[Probar la demo](https://palareserva.vercel.app)**
