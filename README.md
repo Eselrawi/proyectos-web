@@ -55,6 +55,26 @@ App Android que te dice qué cocinar con lo que ya tienes en casa. Escribes los 
 
 Es una app de móvil, así que no tiene demo en el navegador.
 
+## Mi Semana
+
+**[Descargar la APK](https://github.com/Eselrawi/ddd/releases/latest/download/MiSemana.apk)**
+
+Agenda semanal para el móvil. Escribes en una frase lo que tienes que hacer, por ejemplo «mañana a las 10 dentista», y la app entiende el día y la hora. Lo que no te da tiempo a hacer se pasa a mañana deslizando la tarea con el dedo.
+
+| Para quien la usa | Por dentro |
+| --- | --- |
+| Tareas en una frase: «el viernes comprar pan», «pasado mañana a las 5 llamar a mamá» | Analizador propio de fechas y horas en español |
+| Vista previa del día y la hora antes de añadir la tarea | Sin frameworks: HTML, CSS y JavaScript |
+| Deslizar a un lado para hecha y al otro para pasarla a mañana | Gestos táctiles y vibración nativa |
+| Lo que quedó sin hacer otros días aparece arriba, con un botón para pasarlo todo a hoy | Cuenta las veces que se ha aplazado cada tarea |
+| Vista de día y de semana, un color por día y modo oscuro | Emoji automático según la tarea (médico, compra, gimnasio…) |
+| Avisos: resumen por la mañana, pendientes por la noche y plan de mañana | Notificaciones locales con la hora de cada aviso ajustable |
+| Todo se guarda en el móvil, sin cuenta y sin internet | APK compilada automáticamente con GitHub Actions |
+
+Es una app de Android: se instala descargando la APK en el móvil.
+
+Tecnología: HTML, CSS, JavaScript, Capacitor y GitHub Actions.
+
 ## Notas
 
 En todos los proyectos el contenido y los datos son de ejemplo. El código no está publicado aquí.
