@@ -42,6 +42,19 @@ Pensada para enseñarla: entras como jugador, recepción o encargado con un toqu
 
 Tecnología: Next.js, React, TypeScript, Tailwind, Three.js, Supabase (Postgres) y Vercel.
 
+## Tu Chef Personal
+
+App Android que te dice qué cocinar con lo que ya tienes en casa. Escribes los ingredientes que te quedan y la app te genera una receta completa con inteligencia artificial, sin tener que buscar ni comprar de más. Fue mi proyecto de fin de grado.
+
+| Para quien cocina | Por dentro |
+| --- | --- |
+| Receta a partir de tus ingredientes, en segundos | Recetas generadas con Gemini 2.5 Flash |
+| Registro e inicio de sesión | Sesión guardada en el móvil |
+| Historial con todas las recetas que has generado | Base de datos local SQLite, funciona sin cuenta en la nube |
+| Pantallas claras y modo oscuro | Java, XML y Android Studio |
+
+Es una app de móvil, así que no tiene demo en el navegador.
+
 ## Notas
 
 En todos los proyectos el contenido y los datos son de ejemplo. El código no está publicado aquí.
