@@ -29,7 +29,7 @@ Reservas de pistas de pádel para clubes pequeños y de pueblo. El jugador reser
 
 | Para el jugador | Para el club |
 | --- | --- |
-| Reserva por hora, sin elegir pista | Cero solapes garantizado en la base de datos |
+| Reserva por hora, elegiendo pista | Cero solapes garantizado en la base de datos |
 | Pistas en 3D con el color del club | Panel en tiempo real: agenda, llegadas, pagos |
 | Sin cuenta: el móvil se acuerda de ti | Pago en el club o Bizum, marcado a mano |
 | Lista de espera con aviso al móvil | Reservas fijas semanales que se renuevan solas |
