@@ -75,6 +75,25 @@ Es una app de Android: se instala descargando la APK en el móvil.
 
 Tecnología: HTML, CSS, JavaScript, Capacitor y GitHub Actions.
 
+## Mi Empresa Virtual
+
+**[Probar la demo](https://mi-empresa-virtual.vercel.app)**
+
+Una oficina vista desde arriba, en 3D o en plano, con una sala por departamento y un equipo de unos treinta y cinco agentes de IA. Cada uno tiene su cargo, su personalidad y lo que está haciendo en ese momento. Tú propones una idea y el equipo la investiga, la debate, la construye y prepara su lanzamiento.
+
+| Para quien la usa | Por dentro |
+| --- | --- |
+| Oficina en 3D con salas, escritorios y agentes que caminan, se sientan y teclean | Escena con Three.js y React Three Fiber, con vista 2D alternativa en SVG |
+| Lista desplegable del equipo con el estado y la tarea de cada persona | Estado de los agentes compartido entre la oficina, la lista y los paneles |
+| Panel de la jefa con las ideas, sus fases y las tres paradas de aprobación | Flujo Idea, Investigación, Comité, Desarrollo, Publicación y Lanzamiento guardado en SQLite |
+| Comité de 8 voces que debate, puntúa y vota Adelante, Pivotar o Descartar | Respuestas en directo con Server-Sent Events |
+| Sala de descanso a la que va quien no tiene trabajo | Rutas por pasillos y puertas con una pequeña máquina de estados |
+| Contador de tokens y límite de agentes trabajando a la vez | Cada agente es un archivo con su prompt y su modelo; control del gasto por llamada |
+
+La demo publicada enseña la oficina con datos de ejemplo. Los agentes de IA solo funcionan en la versión local, así que aquí no se ejecuta ninguno.
+
+Tecnología: Next.js, React, TypeScript, Three.js, SQLite, Claude Agent SDK y Vercel.
+
 ## Notas
 
 En todos los proyectos el contenido y los datos son de ejemplo. El código no está publicado aquí.
